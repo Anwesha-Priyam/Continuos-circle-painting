@@ -5,9 +5,8 @@ var radius="empty";
 var width="empty";
 var color="Aqua";
 width=4;
-canvas.addEventListener("mousedown", my_mouseDown);
-
-function my_mouseDown(e)
+canvas.addEventListener("mousedown", my_mousedown);
+function my_mousedown(e)
 {
     color=document.getElementById("userColour").value;
     width=document.getElementById("lineWidth").value
@@ -15,26 +14,26 @@ function my_mouseDown(e)
     mouseEvent="mouseDown";
 }
 
-canvas.addEventListener("mouseUp", my_mouseUp);
-function my_mouseUp(e)
+canvas.addEventListener("mouseUp", my_mouseup);
+function my_mouseup(e)
 {
     mouseEvent="mouseUp";
 }
 
-canvas.addEventListener("mouseLeave", my_mouseLeave);
-function my_mouseLeave(e)
+canvas.addEventListener("mouseLeave", my_mouseleave);
+function my_mouseleave(e)
 {
     mouseEvent="mouseLeave";
 }
 
-canvas.addEventListener("mouseMove", my_mousemove);
+canvas.addEventListener("mousemove", my_mousemove);
 function my_mousemove(e)
 {
-    currentPositionOfMouseX=e.clientX-canvasX.offsetLeft;
-    currentPositionOfMouseY=e.clientY-canvasY.offsetTop;
+    currentPositionOfMouseX=e.clientX-canvas.offsetLeft;
+    currentPositionOfMouseY=e.clientY-canvas.offsetTop;
     if (mouseEvent=="mouseDown")
     {
-        console.log("Current position of X and X =");
+        console.log("Current position of X and Y =");
         console.log("X - " + currentPositionOfMouseX + "Y - " + currentPositionOfMouseY);
         ctx.beginPath();
         ctx.strokeStyle=color;
@@ -45,5 +44,5 @@ function my_mousemove(e)
 }
 function clear()
 {
-    ctx.clearRect(0, 0, 800, 600);
+    ctx.rect(0, 0, 600, 800);
 }
